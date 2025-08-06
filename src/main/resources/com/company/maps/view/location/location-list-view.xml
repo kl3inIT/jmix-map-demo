@@ -62,7 +62,7 @@
                 </maps:mapView>
                 <maps:layers>
                     <maps:tile>
-                        <maps:osmSource/>
+                        <maps:osmSource />
                     </maps:tile>
                     <maps:vector id="buildingLayer">
                         <maps:dataVectorSource id="buildingSource"
