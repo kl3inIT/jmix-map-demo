@@ -47,10 +47,6 @@ public class LocationListView extends StandardListView<Location> {
 
     @Subscribe
     public void onInit(final InitEvent event) {
-        buildingSource.setStyleProvider(LocationStyles::getBuildingStyle);
-        buildingAreaSource.setStyleProvider(LocationStyles::getBuildingAreaStyle);
-        pathToBuildingSource.setStyleProvider(LocationStyles::getPathToBuildingStyle);
-        buildingEntranceSource.setStyleProvider(LocationStyles::getBuildingEntranceStyle);
     }
 
     @Subscribe(id = "locationsDc", target = Target.DATA_CONTAINER)
@@ -65,7 +61,7 @@ public class LocationListView extends StandardListView<Location> {
             mapBuildingLayer.setVisible(false);
 
             Location location = optionalLocation.get();
-            map.fit(new FitOptions(location.getBuilding()).withMaxZoom(19d));
+            map.fit(new FitOptions(location.getCoordinates()).withMaxZoom(19d));
 
         } else {
             mapBuildingLayer.setVisible(true);
@@ -77,7 +73,7 @@ public class LocationListView extends StandardListView<Location> {
 
     private Extent getAllVisibleLocationsExtent() {
         Coordinate[] coordinates = locationsDc.getItems().stream()
-                .map(loc -> loc.getBuilding().getCoordinate())
+                .map(loc -> loc.getCoordinates())
                 .toArray(Coordinate[]::new);
 
         Envelope envelope = CoordinateArrays.envelope(coordinates);

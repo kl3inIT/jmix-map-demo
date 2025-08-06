@@ -31,56 +31,34 @@ public class LocationDetailView extends StandardDetailView<Location> {
 
     @ViewComponent
     private GeoMap map;
-    @ViewComponent("map.buildingLayer.buildingSource")
-    private DataVectorSource<Location> buildingSource;
-    @ViewComponent("map.buildingAreaLayer.buildingAreaSource")
-    private DataVectorSource<Location> buildingAreaSource;
-    @ViewComponent("map.pathToBuildingLayer.pathToBuildingSource")
-    private DataVectorSource<Location> pathToBuildingSource;
-    @ViewComponent("map.buildingEntranceLayer.buildingEntranceSource")
-    private DataVectorSource<Location> buildingEntranceSource;
 
-    @ViewComponent
-    private TypedTextField<Point> buildingField;
     @ViewComponent
     private JmixButton editBuildingButton;
 
     @Subscribe
     public void onInit(final InitEvent event) {
-        buildingSource.setStyleProvider(LocationStyles::getBuildingStyle);
-        buildingSource.addGeoObjectClickListener(clickEvent -> {
-            Location location = clickEvent.getItem();
-            setMapCenter(location.getBuilding());
-        });
-        buildingAreaSource.setStyleProvider(LocationStyles::getBuildingAreaStyle);
-        pathToBuildingSource.setStyleProvider(LocationStyles::getPathToBuildingStyle);
-        buildingEntranceSource.setStyleProvider(LocationStyles::getBuildingEntranceStyle);
     }
 
     @Subscribe
     public void onReady(final ReadyEvent event) {
-        setMapCenter(getEditedEntity().getBuilding());
+        setMapCenter(getEditedEntity().getCoordinates());
     }
 
     @Subscribe
     public void onInitEntity(final InitEntityEvent<Location> event) {
-        buildingField.setReadOnly(false);
         editBuildingButton.setVisible(false);
     }
 
     @Subscribe(id = "editBuildingButton", subject = "clickListener")
     public void onEditBuildingButtonClick(final ClickEvent<JmixButton> event) {
-        buildingField.setReadOnly(false);
         notifications.show("Click on map to select the building location");
     }
 
     @Subscribe("map")
     public void onMapMapClick(final MapClickEvent event) {
-        if (!buildingField.isReadOnly()) {
             Point point = geometryFactory.createPoint(event.getCoordinate());
             Location location = getEditedEntity();
-            location.setBuilding(point);
-        }
+            location.setCoordinates(point);
     }
 
     private void setMapCenter(Geometry center) {

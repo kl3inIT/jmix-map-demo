@@ -47,17 +47,18 @@
                         <action id="remove" type="list_remove"/>
                     </actions>
                     <columns>
-                        <column property="type" autoWidth="true" filterable="true"/>
-                        <column property="city" autoWidth="true" filterable="true"/>
-                        <column property="address" autoWidth="true" filterable="true"/>
+                        <column property="province"/>
+                        <column property="district"/>
+                        <column property="commune"/>
+                        <column property="propertyCount"/>
+                        <column property="coordinates"/>
                     </columns>
                 </dataGrid>
             </vbox>
             <maps:geoMap id="map"
                          height="100%"
                          width="100%">
-                <maps:mapView centerX="0" centerY="51">
-                    <maps:extent minX="-15" minY="30" maxX="40" maxY="60"/>
+                <maps:mapView centerX="108" centerY="16" zoom="6">
                 </maps:mapView>
                 <maps:layers>
                     <maps:tile>
@@ -66,22 +67,7 @@
                     <maps:vector id="buildingLayer">
                         <maps:dataVectorSource id="buildingSource"
                                                dataContainer="locationsDc"
-                                               property="building"/>
-                    </maps:vector>
-                    <maps:vector id="buildingAreaLayer">
-                        <maps:dataVectorSource id="buildingAreaSource"
-                                               dataContainer="locationDc"
-                                               property="buildingArea"/>
-                    </maps:vector>
-                    <maps:vector id="pathToBuildingLayer">
-                        <maps:dataVectorSource id="pathToBuildingSource"
-                                               dataContainer="locationDc"
-                                               property="pathToBuilding"/>
-                    </maps:vector>
-                    <maps:vector id="buildingEntranceLayer">
-                        <maps:dataVectorSource id="buildingEntranceSource"
-                                               dataContainer="locationDc"
-                                               property="buildingEntrance"/>
+                                               property="coordinates"/>
                     </maps:vector>
                 </maps:layers>
             </maps:geoMap>
