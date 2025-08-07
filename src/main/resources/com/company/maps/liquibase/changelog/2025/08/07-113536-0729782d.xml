@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="20250807-03" author="phanhongdat">
+        <!-- Thêm dữ liệu cho bảng PROVINCE - Hà Nội -->
+        <insert tableName="province">
+            <column name="id" value="9f1c2b82-2f98-4c39-b3fa-1e7c10a28a13"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(105.854444 21.028511)"/>
+            <column name="name" value="Hà Nội"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng PROVINCE - TP. Hồ Chí Minh -->
+        <insert tableName="province">
+            <column name="id" value="a1b2c3d4-e5f6-7890-abcd-ef1234567890"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(106.629664 10.823099)"/>
+            <column name="name" value="TP. Hồ Chí Minh"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng PROVINCE - Đà Nẵng -->
+        <insert tableName="province">
+            <column name="id" value="b2c3d4e5-f6a7-8901-bcde-f23456789012"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(108.202167 16.054407)"/>
+            <column name="name" value="Đà Nẵng"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng PROVINCE - Khánh Hòa -->
+        <insert tableName="province">
+            <column name="id" value="c3d4e5f6-a7b8-9012-cdef-345678901234"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(109.196749 12.258734)"/>
+            <column name="name" value="Khánh Hòa"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng DISTRICT - Quận Ba Đình (Hà Nội) -->
+        <insert tableName="district">
+            <column name="id" value="95e3781e-f1c3-4c59-904e-40859e95c327"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(105.838020 21.035760)"/>
+            <column name="name" value="Quận Ba Đình"/>
+            <column name="province_id" value="9f1c2b82-2f98-4c39-b3fa-1e7c10a28a13"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng DISTRICT - Quận Hoàn Kiếm (Hà Nội) -->
+        <insert tableName="district">
+            <column name="id" value="d4e5f6a7-b8c9-0123-defa-456789012345"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(105.850000 21.028333)"/>
+            <column name="name" value="Quận Hoàn Kiếm"/>
+            <column name="province_id" value="9f1c2b82-2f98-4c39-b3fa-1e7c10a28a13"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng DISTRICT - Quận 1 (TP. HCM) -->
+        <insert tableName="district">
+            <column name="id" value="e5f6a7b8-c9d0-1234-efab-567890123456"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(106.698332 10.776944)"/>
+            <column name="name" value="Quận 1"/>
+            <column name="province_id" value="a1b2c3d4-e5f6-7890-abcd-ef1234567890"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng DISTRICT - Quận 3 (TP. HCM) -->
+        <insert tableName="district">
+            <column name="id" value="f6a7b8c9-d0e1-2345-fabc-678901234567"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(106.688889 10.782778)"/>
+            <column name="name" value="Quận 3"/>
+            <column name="province_id" value="a1b2c3d4-e5f6-7890-abcd-ef1234567890"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng DISTRICT - Quận Hải Châu (Đà Nẵng) -->
+        <insert tableName="district">
+            <column name="id" value="a7b8c9d0-e1f2-3456-abcd-789012345678"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(108.202167 16.054407)"/>
+            <column name="name" value="Quận Hải Châu"/>
+            <column name="province_id" value="b2c3d4e5-f6a7-8901-bcde-f23456789012"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng DISTRICT - Thành phố Nha Trang (Khánh Hòa) -->
+        <insert tableName="district">
+            <column name="id" value="b8c9d0e1-f2a3-4567-bcde-890123456789"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(109.196749 12.258734)"/>
+            <column name="name" value="Thành phố Nha Trang"/>
+            <column name="province_id" value="c3d4e5f6-a7b8-9012-cdef-345678901234"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng COMMUNE - Phường Điện Biên (Quận Ba Đình, Hà Nội) -->
+        <insert tableName="commune">
+            <column name="id" value="b4eec984-c3a9-45e8-8c95-9fdc51be402a"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(105.836330 21.032350)"/>
+            <column name="property_count" value="120"/>
+            <column name="name" value="Phường Điện Biên"/>
+            <column name="district_id" value="95e3781e-f1c3-4c59-904e-40859e95c327"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng COMMUNE - Phường Phúc Xá (Quận Ba Đình, Hà Nội) -->
+        <insert tableName="commune">
+            <column name="id" value="c9d0e1f2-a3b4-5678-cdef-901234567890"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(105.840000 21.040000)"/>
+            <column name="property_count" value="85"/>
+            <column name="name" value="Phường Phúc Xá"/>
+            <column name="district_id" value="95e3781e-f1c3-4c59-904e-40859e95c327"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng COMMUNE - Phường Tràng Tiền (Quận Hoàn Kiếm, Hà Nội) -->
+        <insert tableName="commune">
+            <column name="id" value="d0e1f2a3-b4c5-6789-defa-012345678901"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(105.850000 21.028333)"/>
+            <column name="property_count" value="200"/>
+            <column name="name" value="Phường Tràng Tiền"/>
+            <column name="district_id" value="d4e5f6a7-b8c9-0123-defa-456789012345"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng COMMUNE - Phường Bến Nghé (Quận 1, TP. HCM) -->
+        <insert tableName="commune">
+            <column name="id" value="e1f2a3b4-c5d6-7890-efab-123456789012"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(106.698332 10.776944)"/>
+            <column name="property_count" value="350"/>
+            <column name="name" value="Phường Bến Nghé"/>
+            <column name="district_id" value="e5f6a7b8-c9d0-1234-efab-567890123456"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng COMMUNE - Phường Bến Thành (Quận 1, TP. HCM) -->
+        <insert tableName="commune">
+            <column name="id" value="f2a3b4c5-d6e7-8901-fabc-234567890123"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(106.700000 10.780000)"/>
+            <column name="property_count" value="280"/>
+            <column name="name" value="Phường Bến Thành"/>
+            <column name="district_id" value="e5f6a7b8-c9d0-1234-efab-567890123456"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng COMMUNE - Phường Võ Thị Sáu (Quận 3, TP. HCM) -->
+        <insert tableName="commune">
+            <column name="id" value="a3b4c5d6-e7f8-9012-abcd-345678901234"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(106.688889 10.782778)"/>
+            <column name="property_count" value="180"/>
+            <column name="name" value="Phường Võ Thị Sáu"/>
+            <column name="district_id" value="f6a7b8c9-d0e1-2345-fabc-678901234567"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng COMMUNE - Phường Hải Châu 1 (Quận Hải Châu, Đà Nẵng) -->
+        <insert tableName="commune">
+            <column name="id" value="b4c5d6e7-f8a9-0123-bcde-456789012345"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(108.202167 16.054407)"/>
+            <column name="property_count" value="150"/>
+            <column name="name" value="Phường Hải Châu 1"/>
+            <column name="district_id" value="a7b8c9d0-e1f2-3456-abcd-789012345678"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng COMMUNE - Phường Lộc Thọ (TP. Nha Trang, Khánh Hòa) -->
+        <insert tableName="commune">
+            <column name="id" value="c5d6e7f8-a9b0-1234-cdef-567890123456"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(109.196749 12.258734)"/>
+            <column name="property_count" value="220"/>
+            <column name="name" value="Phường Lộc Thọ"/>
+            <column name="district_id" value="b8c9d0e1-f2a3-4567-bcde-890123456789"/>
+        </insert>
+
+        <!-- Thêm dữ liệu cho bảng COMMUNE - Phường Vạn Thạnh (TP. Nha Trang, Khánh Hòa) -->
+        <insert tableName="commune">
+            <column name="id" value="d6e7f8a9-b0c1-2345-defa-678901234567"/>
+            <column name="version" value="1"/>
+            <column name="coordinates" value="POINT(109.200000 12.260000)"/>
+            <column name="property_count" value="190"/>
+            <column name="name" value="Phường Vạn Thạnh"/>
+            <column name="district_id" value="b8c9d0e1-f2a3-4567-bcde-890123456789"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

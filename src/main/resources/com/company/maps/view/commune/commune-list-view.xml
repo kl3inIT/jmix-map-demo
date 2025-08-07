@@ -2,19 +2,19 @@
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
       xmlns:maps="http://jmix.io/schema/maps/ui"
-      title="msg://locationListView.title"
-      focusComponent="locationsDataGrid">
+      title="msg://communeListView.title"
+      focusComponent="communesDataGrid">
     <data>
-        <collection id="locationsDc"
-                    class="com.company.maps.entity.Location">
+        <collection id="communesDc"
+                    class="com.company.maps.entity.Commune">
             <fetchPlan extends="_base"/>
-            <loader id="locationsDl" readOnly="true">
+            <loader id="communesDl" readOnly="true">
                 <query>
-                    <![CDATA[select e from Location e]]>
+                    <![CDATA[select e from Commune e]]>
                 </query>
             </loader>
         </collection>
-        <instance id="locationDc" class="com.company.maps.entity.Location"/>
+        <instance id="communeDc" class="com.company.maps.entity.Commune"/>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -30,16 +30,16 @@
         <hbox width="100%" height="100%">
             <vbox height="100%">
                 <hbox id="buttonsPanel" classNames="buttons-panel">
-                    <button id="createBtn" action="locationsDataGrid.create"/>
-                    <button id="editBtn" action="locationsDataGrid.edit"/>
-                    <button id="removeBtn" action="locationsDataGrid.remove"/>
-                    <simplePagination id="pagination" dataLoader="locationsDl"/>
+                    <button id="createButton" action="communesDataGrid.create"/>
+                    <button id="editButton" action="communesDataGrid.edit"/>
+                    <button id="removeButton" action="communesDataGrid.remove"/>
+                    <simplePagination id="pagination" dataLoader="communesDl"/>
                 </hbox>
-                <dataGrid id="locationsDataGrid"
+                <dataGrid id="communesDataGrid"
                           width="100%"
                           height="100%"
                           minHeight="20em"
-                          dataContainer="locationsDc"
+                          dataContainer="communesDc"
                           columnReorderingAllowed="true">
                     <actions>
                         <action id="create" type="list_create" actionVariant="DEFAULT"/>
@@ -47,11 +47,9 @@
                         <action id="remove" type="list_remove"/>
                     </actions>
                     <columns>
-                        <column property="province"/>
-                        <column property="district"/>
-                        <column property="commune"/>
-                        <column property="propertyCount"/>
+                        <column property="name"/>
                         <column property="coordinates"/>
+                        <column property="propertyCount"/>
                     </columns>
                 </dataGrid>
             </vbox>
@@ -65,8 +63,8 @@
                         <maps:osmSource />
                     </maps:tile>
                     <maps:vector id="buildingLayer">
-                        <maps:dataVectorSource id="buildingSource"
-                                               dataContainer="locationsDc"
+                        <maps:dataVectorSource id="dataVectorSource"
+                                               dataContainer="communesDc"
                                                property="coordinates"/>
                     </maps:vector>
                 </maps:layers>

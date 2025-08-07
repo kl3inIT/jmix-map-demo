@@ -2,9 +2,10 @@
 <menu-config xmlns="http://jmix.io/schema/flowui/menu">
 
     <menu id="application" title="msg://com.company.maps/menu.application.title" opened="true">
-        <item view="Location.list" title="msg://com.company.maps.view.location/locationListView.title"/>
         <item view="User.list" title="msg://com.company.maps.view.user/UserListView.title"/>
         <item view="GeoMapCluster" title="msg://com.company.maps.view.geomapcluster/geoMapCluster.title"/>
+        <item view="Province.list" title="msg://com.company.maps.view.province/provinceListView.title"/>
+        <item view="Commune.list" title="msg://com.company.maps.view.commune/communeListView.title"/>
     </menu>
 
 </menu-config>

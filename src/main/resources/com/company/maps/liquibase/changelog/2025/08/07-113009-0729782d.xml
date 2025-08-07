@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="maps">
+        <createTable tableName="COMMUNE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_COMMUNE"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COORDINATES" type="varchar(100 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROPERTY_COUNT" type="INT"/>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DISTRICT_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="maps">
+        <createTable tableName="DISTRICT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DISTRICT"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COORDINATES" type="varchar(100 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROPERTY_COUNT" type="INT"/>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROVINCE_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="maps">
+        <createTable tableName="PROVINCE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PROVINCE"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COORDINATES" type="varchar(100 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROPERTY_COUNT" type="INT"/>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="maps">
+        <createIndex indexName="IDX_COMMUNE_DISTRICT" tableName="COMMUNE">
+            <column name="DISTRICT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="DISTRICT_ID" baseTableName="COMMUNE"
+                                 constraintName="FK_COMMUNE_ON_DISTRICT" onDelete="CASCADE" referencedColumnNames="ID"
+                                 referencedTableName="DISTRICT"/>
+    </changeSet>
+    <changeSet id="5" author="maps">
+        <createIndex indexName="IDX_DISTRICT_PROVINCE" tableName="DISTRICT">
+            <column name="PROVINCE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="PROVINCE_ID" baseTableName="DISTRICT"
+                                 constraintName="FK_DISTRICT_ON_PROVINCE" onDelete="CASCADE" referencedColumnNames="ID"
+                                 referencedTableName="PROVINCE"/>
+    </changeSet>
+    <changeSet id="6" author="maps">
+        <dropTable cascadeConstraints="true" tableName="location"/>
+    </changeSet>
+</databaseChangeLog>

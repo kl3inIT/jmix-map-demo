@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:maps="http://jmix.io/schema/maps/ui"
-      title="msg://locationDetailView.title"
+      title="msg://communeDetailView.title"
       focusComponent="form">
     <data>
-        <instance id="locationDc"
-                  class="com.company.maps.entity.Location">
+        <instance id="communeDc"
+                  class="com.company.maps.entity.Commune">
             <fetchPlan extends="_base"/>
-            <loader/>
+            <loader id="communeDl"/>
         </instance>
     </data>
     <facets>
@@ -18,10 +18,8 @@
         <action id="closeAction" type="detail_close"/>
     </actions>
     <layout>
-        <formLayout id="form" dataContainer="locationDc">
-            <textField id="provinceField" property="province"/>
-            <textField id="districtField" property="district"/>
-            <textField id="communeField" property="commune"/>
+        <formLayout id="form" dataContainer="communeDc">
+            <textField id="nameField" property="name"/>
             <textField id="propertyCountField" property="propertyCount"/>
             <textField id="coordinatesField" property="coordinates" readOnly="true">
                 <suffix>
@@ -33,8 +31,7 @@
         <maps:geoMap id="map"
                      height="100%"
                      width="100%">
-            <maps:mapView centerX="105.854444" centerY="21.026643" zoom="6">
-                <maps:extent minX="102" minY="8" maxX="110" maxY="24"/>
+            <maps:mapView centerX="108" centerY="16" zoom="6">
             </maps:mapView>
             <maps:layers>
                 <maps:tile>
@@ -42,7 +39,7 @@
                 </maps:tile>
                 <maps:vector id="vectorLayer">
                     <maps:dataVectorSource id="dataVectorSource"
-                                           dataContainer="locationDc"
+                                           dataContainer="communeDc"
                                            property="coordinates"/>
                 </maps:vector>
             </maps:layers>
@@ -53,3 +50,4 @@
         </hbox>
     </layout>
 </view>
+
