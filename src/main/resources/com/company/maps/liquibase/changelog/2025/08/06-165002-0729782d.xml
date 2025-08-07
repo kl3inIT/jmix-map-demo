@@ -10,22 +10,16 @@
             <column name="ID" type="UUID">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_LOCATION"/>
             </column>
-            <column name="BUILDING_ENTRANCE" type="varchar(100 BYTE)"/>
-            <column name="PATH_TO_BUILDING" type="varchar(4000 BYTE)"/>
-            <column name="BUILDING_AREA" type="varchar(4000 BYTE)"/>
-            <column name="CITY" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="ADDRESS" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="TYPE_" type="INT"/>
-            <column name="BUILDING" type="varchar(100 BYTE)">
-                <constraints nullable="false"/>
-            </column>
             <column name="VERSION" type="INT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <addColumn tableName="LOCATION">
+            <column name="COMMUNE" type="VARCHAR(255)"/>
+            <column name="COORDINATES" type="varchar(100 BYTE)"/>
+            <column name="DISTRICT" type="VARCHAR(255)"/>
+            <column name="PROPERTY_COUNT" type="INT"/>
+            <column name="PROVINCE" type="VARCHAR(255)"/>
+        </addColumn>
     </changeSet>
 </databaseChangeLog>

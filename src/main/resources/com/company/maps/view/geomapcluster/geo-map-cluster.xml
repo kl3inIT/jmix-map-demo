@@ -24,12 +24,22 @@
                 <maps:tile>
                     <maps:osmSource/>
                 </maps:tile>
-                <maps:vector>
-                    <maps:cluster weightProperty="propertyCount"
-                                  distance="30"
-                                  minDistance="30">
-                        <maps:dataVectorSource dataContainer="locationsDc"
-                                               property="coordinates"/>
+                <maps:vector id="provinceLayer">
+                    <maps:cluster id="provinceCluster" weightProperty="propertyCount" distance="0">
+                        <maps:vectorSource id="provinceSource"/>
+                    </maps:cluster>
+                </maps:vector>
+                <maps:vector id="districtLayer">
+                    <maps:cluster id="districtCluster" weightProperty="propertyCount" distance="0">
+                        <maps:vectorSource id="districtSource"/>
+                    </maps:cluster>
+                </maps:vector>
+                <maps:vector id="communeLayer">
+                    <maps:cluster id="communeCluster" weightProperty="propertyCount" distance="0">
+                        <maps:dataVectorSource id="communeSource"
+                                               dataContainer="locationsDc"
+                                               property="coordinates">
+                        </maps:dataVectorSource>
                     </maps:cluster>
                 </maps:vector>
             </maps:layers>

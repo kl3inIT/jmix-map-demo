@@ -6,6 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
     <changeSet id="3" author="maps">
+
         <insert tableName="LOCATION">
             <column name="ID" value="d2c5e1d7-4c1b-49b4-9877-a3944c404c8e"/>
             <column name="COMMUNE" value="Phường Láng Hạ"/>
@@ -76,4 +77,5 @@
             <column name="VERSION" valueNumeric="1"/>
         </insert>
     </changeSet>
+
 </databaseChangeLog>
