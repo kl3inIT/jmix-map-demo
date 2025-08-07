@@ -1,6 +1,6 @@
 package com.company.maps.view.geomapcluster;
 
-import com.company.maps.entity.Location;
+import com.company.maps.entity.Commune;
 import com.company.maps.view.main.MainView;
 import com.vaadin.flow.router.Route;
 import io.jmix.core.DataManager;
@@ -57,8 +57,7 @@ public class GeoMapCluster extends StandardView {
 //    @ViewComponent("map.communeLayer.communeCluster.communeSource")
 //    private DataVectorSource<Location> communeSource;
 //
-//    @ViewComponent
-//    private CollectionContainer<Location> locationsDc;
+
 //
 //    @Subscribe
 //    public void onInit(final InitEvent event) {

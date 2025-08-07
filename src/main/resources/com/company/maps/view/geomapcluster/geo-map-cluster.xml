@@ -2,11 +2,11 @@
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:maps="http://jmix.io/schema/maps/ui">
     <data>
-        <collection id="locationsDc"
-                    class="com.company.maps.entity.Location"
+        <collection id="communesDc"
+                    class="com.company.maps.entity.Commune"
                     fetchPlan="_base">
-            <loader id="locationsDl">
-                <query><![CDATA[select e from Location e]]></query>
+            <loader id="communesDl">
+                <query><![CDATA[select e from Commune e]]></query>
             </loader>
         </collection>
     </data>
@@ -35,9 +35,9 @@
 <!--                    </maps:cluster>-->
 <!--                </maps:vector>-->
                 <maps:vector id="communeLayer">
-                    <maps:cluster id="communeCluster" weightProperty="propertyCount" distance="0">
+                    <maps:cluster id="communeCluster" weightProperty="propertyCount" distance="30">
                         <maps:dataVectorSource id="communeSource"
-                                               dataContainer="locationsDc"
+                                               dataContainer="communesDc"
                                                property="coordinates">
                         </maps:dataVectorSource>
                     </maps:cluster>
