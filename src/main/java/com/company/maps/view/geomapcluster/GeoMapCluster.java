@@ -8,7 +8,6 @@ import io.jmix.core.entity.KeyValueEntity;
 import io.jmix.flowui.Notifications;
 import io.jmix.flowui.model.CollectionContainer;
 import io.jmix.flowui.view.*;
-import io.jmix.maps.utils.GeometryUtils;
 import io.jmix.mapsflowui.component.GeoMap;
 import io.jmix.mapsflowui.component.event.MapZoomChangedEvent;
 import io.jmix.mapsflowui.component.model.feature.PointFeature;
@@ -20,6 +19,7 @@ import io.jmix.mapsflowui.kit.component.model.feature.Feature;
 import io.jmix.mapsflowui.kit.component.model.style.Fill;
 import io.jmix.mapsflowui.kit.component.model.style.Style;
 import io.jmix.mapsflowui.kit.component.model.style.image.CircleStyle;
+import io.jmix.mapsflowui.kit.component.model.style.stroke.Stroke;
 import io.jmix.mapsflowui.kit.component.model.style.text.TextStyle;
 import org.locationtech.jts.geom.Point;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,14 +83,16 @@ public class GeoMapCluster extends StandardView {
 
         List<Feature> provinceFeatures = new ArrayList<>();
         for (KeyValueEntity entity : provinceAggregates) {
-            String province = entity.getValue("province");
             Long totalProperty = entity.getValue("totalProperty");
             Style featureStyle = new Style()
                     .withImage(new CircleStyle()
-                            .withRadius(20) // Same radius as the cluster
-                            .withFill(new Fill("#FF5733"))) // Same color as the cluster
+                            .withRadius(14) // Same radius as the cluster
+                            .withFill(new Fill("#FF3333"))
+                            .withStroke(new Stroke()
+                                    .withWidth(4.0)
+                                    .withColor("#FF9999"))) // Same color as the cluster
                     .withText(new TextStyle()
-                            .withFont("16px sans-serif")
+                            .withFont("10px sans-serif")
                             .withFill(new Fill("#FFFFFF"))
                             .withText(totalProperty != null ? totalProperty.toString() : ""));
 
@@ -111,15 +113,16 @@ public class GeoMapCluster extends StandardView {
 
         List<Feature> districtFeatures = new ArrayList<>();
         for (KeyValueEntity entity : districtAggregates) {
-            String province = entity.getValue("province");
-            String district = entity.getValue("district");
             Long totalProperty = entity.getValue("totalProperty");
             Style featureStyle = new Style()
                     .withImage(new CircleStyle()
-                            .withRadius(20)
-                            .withFill(new Fill("#1976D2"))) // xanh lam đậm
+                            .withRadius(15)
+                            .withFill(new Fill("#9933FF"))
+                            .withStroke(new Stroke()
+                                    .withWidth(4.0)
+                                    .withColor("#CC99FF")))
                     .withText(new TextStyle()
-                            .withFont("16px sans-serif")
+                            .withFont("12px sans-serif")
                             .withFill(new Fill("#FFFFFF"))
                             .withText(totalProperty != null ? totalProperty.toString() : ""));
 
@@ -130,14 +133,16 @@ public class GeoMapCluster extends StandardView {
                             .withStyles(featureStyle)); // Áp dụng kiểu cho từng điểm
         }
         districtSource.addAllFeatures(districtFeatures);
-
+        provinceLayer.setVisible(true);
+        districtLayer.setVisible(false);
+        communeLayer.setVisible(false);
     }
 
     @Subscribe("map")
     public void onMapMapZoomChanged(MapZoomChangedEvent event) {
         double zoom = event.getZoom();
-        provinceLayer.setVisible(zoom <= 6);
-        districtLayer.setVisible(zoom > 6 && zoom <= 12);
-        communeLayer.setVisible(zoom > 12);
+        provinceLayer.setVisible(zoom > 4 && zoom <= 11);
+        districtLayer.setVisible(zoom >11  && zoom <= 14);
+        communeLayer.setVisible(zoom > 14);
     }
 }

@@ -35,6 +35,9 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.jmix.datatools:jmix-datatools-starter'
+    implementation 'io.jmix.datatools:jmix-datatools-flowui-starter'
+
     implementation 'io.jmix.maps:jmix-maps-starter'
     implementation 'io.jmix.maps:jmix-maps-flowui-starter'
 

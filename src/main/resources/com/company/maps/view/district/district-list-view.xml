@@ -2,20 +2,20 @@
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
       xmlns:maps="http://jmix.io/schema/maps/ui"
-      title="msg://provinceListView.title"
-      focusComponent="provincesDataGrid">
+      title="msg://districtListView.title"
+      focusComponent="districtsDataGrid">
 
     <data>
-        <collection id="provincesDc"
-                    class="com.company.maps.entity.Province">
+        <collection id="districtsDc"
+                    class="com.company.maps.entity.District">
             <fetchPlan extends="_base"/>
-            <loader id="provincesDl" readOnly="true">
+            <loader id="districtsDl" readOnly="true">
                 <query>
-                    <![CDATA[select e from Province e]]>
+                    <![CDATA[select e from District e]]>
                 </query>
             </loader>
         </collection>
-        <instance id="provinceDc" class="com.company.maps.entity.Province"/>
+        <instance id="districtDc" class="com.company.maps.entity.District"/>
     </data>
 
     <facets>
@@ -34,17 +34,17 @@
         <hbox width="100%" height="100%">
             <vbox height="100%">
                 <hbox id="buttonsPanel" classNames="buttons-panel">
-                    <button id="createButton" action="provincesDataGrid.create"/>
-                    <button id="editButton" action="provincesDataGrid.edit"/>
-                    <button id="removeButton" action="provincesDataGrid.remove"/>
-                    <simplePagination id="pagination" dataLoader="provincesDl"/>
+                    <button id="createButton" action="districtsDataGrid.create"/>
+                    <button id="editButton" action="districtsDataGrid.edit"/>
+                    <button id="removeButton" action="districtsDataGrid.remove"/>
+                    <simplePagination id="pagination" dataLoader="districtsDl"/>
                 </hbox>
 
-                <dataGrid id="provincesDataGrid"
+                <dataGrid id="districtsDataGrid"
                           width="100%"
                           height="100%"
                           minHeight="20em"
-                          dataContainer="provincesDc"
+                          dataContainer="districtsDc"
                           columnReorderingAllowed="true">
                     <actions>
                         <action id="create" type="list_create" actionVariant="DEFAULT"/>
@@ -67,9 +67,9 @@
                     <maps:tile>
                         <maps:osmSource/>
                     </maps:tile>
-                    <maps:vector id="provinceLayer">
-                        <maps:dataVectorSource id="provinceVectorSource"
-                                               dataContainer="provincesDc"
+                    <maps:vector id="districtLayer">
+                        <maps:dataVectorSource id="districtVectorSource"
+                                               dataContainer="districtsDc"
                                                property="coordinates"/>
                     </maps:vector>
                 </maps:layers>

@@ -6,7 +6,18 @@
         <item view="GeoMapCluster" title="msg://com.company.maps.view.geomapcluster/geoMapCluster.title"/>
         <item view="Province.list" title="msg://com.company.maps.view.province/provinceListView.title"/>
         <item view="Commune.list" title="msg://com.company.maps.view.commune/communeListView.title"/>
+        <item view="District.list" title="msg://com.company.maps.view.district/districtListView.title"/>
         <item view="Geomapclusterv1" title="msg://com.company.maps.view.geomapclusterv1/geomapclusterv1.title"/>
+    </menu>
+    <menu id="security" title="msg://com.company.maps/menu.security.title">
+        <item view="sec_ResourceRoleModel.list"
+              title="msg://io.jmix.securityflowui.view.resourcerole/resourceRoleModelListView.menu"/>
+        <item view="sec_RowLevelRoleModel.list"
+              title="msg://io.jmix.securityflowui.view.rowlevelrole/rowLevelRoleModelListView.menu"/>
+    </menu>
+    <menu id="datatools" title="msg://com.company.maps/menu.datatools.title">
+        <item view="datatl_entityInspectorListView"
+              title="msg://io.jmix.datatoolsflowui.view.entityinspector/listTitle"/>
     </menu>
 
 </menu-config>
