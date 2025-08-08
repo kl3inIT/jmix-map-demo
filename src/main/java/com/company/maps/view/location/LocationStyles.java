@@ -1,6 +1,5 @@
 package com.company.maps.view.location;
 
-import com.company.maps.entity.Location;
 import com.company.maps.entity.LocationType;
 import io.jmix.mapsflowui.kit.component.model.Padding;
 import io.jmix.mapsflowui.kit.component.model.style.Fill;
