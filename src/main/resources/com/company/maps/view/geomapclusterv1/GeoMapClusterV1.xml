@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:maps="http://jmix.io/schema/maps/ui">
+    <data>
+        <collection id="communesDc"
+                    class="com.company.maps.entity.Commune"
+                    fetchPlan="_base">
+            <loader id="communesDl">
+                <query><![CDATA[select e from Commune e]]></query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <maps:geoMap id="map"
+                     height="100%"
+                     width="100%"
+                     minHeight="25em">
+            <maps:mapView centerX="108" centerY="16" zoom="6">
+            </maps:mapView>
+            <maps:layers>
+                <maps:tile>
+                    <maps:osmSource/>
+                </maps:tile>
+                <maps:vector id="communeLayer">
+                    <maps:cluster id="communeCluster" weightProperty="propertyCount" distance="30"
+                                  showSinglePointAsCluster="true">
+                        <maps:dataVectorSource id="communeSource"
+                                               dataContainer="communesDc"
+                                               property="coordinates">
+                        </maps:dataVectorSource>
+                    </maps:cluster>
+                </maps:vector>
+            </maps:layers>
+        </maps:geoMap>
+    </layout>
+</view>

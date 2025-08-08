@@ -137,7 +137,7 @@ public class GeoMapCluster extends StandardView {
     public void onMapMapZoomChanged(MapZoomChangedEvent event) {
         double zoom = event.getZoom();
         provinceLayer.setVisible(zoom <= 6);
-        districtLayer.setVisible(zoom > 6 && zoom <= 10);
-        communeLayer.setVisible(zoom > 10);
+        districtLayer.setVisible(zoom > 6 && zoom <= 12);
+        communeLayer.setVisible(zoom > 12);
     }
 }
